@@ -62,13 +62,7 @@ static NSString *const PWHidingSlavesKey = @"net.projectwizards.net.hidingSlaves
     NSHashTable *slaves = objc_getAssociatedObject(self, (__bridge const void*)PWHidingSlavesKey);
     if (!slaves)
     {
-		#if (__MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_8 || __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0)
-			// the modern way
-			slaves = [NSHashTable weakObjectsHashTable];
-		#else
-			// deprecated in 10.8
-			slaves = [NSHashTable hashTableWithWeakObjects];
-		#endif
+        slaves = [NSHashTable weakObjectsHashTable];
         objc_setAssociatedObject(self, (__bridge const void*)PWHidingSlavesKey, slaves, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     [slaves addObject:slave];
