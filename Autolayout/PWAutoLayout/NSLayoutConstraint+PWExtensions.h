@@ -4,9 +4,11 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
+#if TARGET_OS_IPHONE
 #import "UIView+PWExtensions.h"
+#else
 #import "NSView+PWExtensions.h"
-
+#endif
 
 @interface NSLayoutConstraint (PWExtensions) <PWViewHidingSlave>
 
