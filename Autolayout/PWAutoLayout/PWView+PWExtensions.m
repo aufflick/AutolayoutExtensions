@@ -4,6 +4,7 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
+#import "PWView+PWExtensions.h"
 #import "NSLayoutConstraint+PWExtensions.h"
 #import "JRSwizzle.h"
 #import <objc/runtime.h>

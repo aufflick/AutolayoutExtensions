@@ -4,14 +4,16 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
-#if TARGET_OS_IPHONE
-#import "UIView+PWExtensions.h"
-#else
-#import "NSView+PWExtensions.h"
-#endif
+#import "PWViewAliases.h"
+
+@protocol PWViewHidingSlave;
 
 @interface NSLayoutConstraint (PWExtensions) <PWViewHidingSlave>
 
-@property (nonatomic, readwrite, unsafe_unretained) IBOutlet PWView *PWHidingMasterView;
+#if TARGET_OS_IPHONE
+@property (nonatomic, readwrite, unsafe_unretained) IBOutlet UIView *PWHidingMasterView;
+#else
+@property (nonatomic, readwrite, unsafe_unretained) IBOutlet NSView *PWHidingMasterView;
+#endif
 
 @end

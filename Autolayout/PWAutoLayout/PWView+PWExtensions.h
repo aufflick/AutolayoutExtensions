@@ -4,23 +4,7 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
-#if TARGET_OS_IPHONE
-
-#import <UIKit/UIKit.h>
-
-#define PWView UIView
-#define PWControl UIControl
-#define PWSize CGSize
-
-#else
-
-#import <Cocoa/Cocoa.h>
-
-#define PWView NSView
-#define PWControl NSControl
-#define PWSize NSSize
-
-#endif
+#import "PWViewAliases.h"
 
 @protocol PWViewHidingSlave <NSObject>
 
@@ -29,7 +13,12 @@
 // If a view gets hidden, all constraints and views whose PWHidingMasterView point
 // to the hidden view get hidden as well. (Hiding a constraint means nullifying its constant).
 // The same goes for unhiding.
-@property (nonatomic, readwrite, unsafe_unretained)  IBOutlet PWView *PWHidingMasterView;
+
+#if TARGET_OS_IPHONE
+@property (nonatomic, readwrite, unsafe_unretained) IBOutlet UIView *PWHidingMasterView;
+#else
+@property (nonatomic, readwrite, unsafe_unretained) IBOutlet NSView *PWHidingMasterView;
+#endif
 
 @property (nonatomic, readwrite, getter=isPWHidden) BOOL PWHidden;
 
