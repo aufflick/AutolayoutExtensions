@@ -4,7 +4,7 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
-#import "PWViewAliases.h"
+#import <Foundation/Foundation.h>
 
 @protocol PWViewHidingSlave;
 

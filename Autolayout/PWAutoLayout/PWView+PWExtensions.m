@@ -9,6 +9,14 @@
 #import "JRSwizzle.h"
 #import <objc/runtime.h>
 
+#if TARGET_OS_IPHONE
+@compatibility_alias PWView UIView;
+#define PWSize CGSize
+#else
+@compatibility_alias PWView NSView;
+#define PWSize NSSize
+#endif
+
 @interface PWView (PWExtensionsPrivate)
 - (PWSize)PWIntrinsicContentSizeIsBase:(BOOL)isBase;   // Needed for Xcode versions prior to 4.6 DP1
 @end

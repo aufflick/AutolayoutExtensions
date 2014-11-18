@@ -8,6 +8,11 @@
 #import "NSLayoutConstraint+PWExtensions.h"
 #import <objc/runtime.h>
 
+#if TARGET_OS_IPHONE
+@compatibility_alias PWView UIView;
+#else
+@compatibility_alias PWView NSView;
+#endif
 
 @implementation NSLayoutConstraint (PWExtensions)
 

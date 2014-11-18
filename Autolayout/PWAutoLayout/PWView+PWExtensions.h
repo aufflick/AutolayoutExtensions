@@ -4,7 +4,7 @@
 //  Created by Frank Illenberger on 05.11.12.
 //
 
-#import "PWViewAliases.h"
+#import <Foundation/Foundation.h>
 
 @protocol PWViewHidingSlave <NSObject>
 
@@ -27,7 +27,11 @@
 
 #pragma mark -
 
-@interface PWView (PWExtensions) <PWViewHidingSlave>
+#if TARGET_OS_IPHONE
+@interface UIView(PWExtensions) <PWViewHidingSlave>
+#else
+@interface NSView (PWExtensions) <PWViewHidingSlave>
+#endif
 
 // PWHidingSlaves are other views or layout constraints whose PWHidingMasterView
 // outlets point to the receiver.
